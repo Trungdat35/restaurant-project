@@ -1,0 +1,53 @@
+<div style="margin-top: 50px;">
+    <nz-spin [nzSpinning]="isSpinning" [nzSize]="'large'" nzTip="Working...">
+        <div class="parent">
+            <div class="child">
+                <div nz-row class="imgDiv">
+                    <h2 style="margin-left: 110px;">Update Product</h2>
+                </div>
+                <form nz-form [formGroup]="validateForm"  (ngSubmit)="updateCategory()">
+                    <div nz-row>
+                        <div class="file-upload-container">
+                            <label class="file-upload-label">
+                                <span style="margin-left: 100px;">Select a file</span>
+                                <input type="file" nz-button nzType="primary" accept="image/x-png,image/gif,image/jpeg"
+                                    (change)="onFileSelected($event)">
+                            </label>
+
+                            <div *ngIf="imagePreview" class="image-preview">
+                                <div class="circle-image">
+                                    <img class="preview-image" alt="Existing image" [src]="imagePreview" />
+                                </div>
+                            </div>
+                            
+                            <div *ngIf="existingImg" class="image-preview">
+                                <div class="circle-image">
+                                    <img class="preview-image" alt="Existing image" [src]="existingImg" />
+                                </div>
+                            </div>
+                        </div>
+                        <div nz-col nzSpan="24" style="margin-top: 20px;">
+                            <nz-form-item>
+                                <nz-form-control nzHasFeedBack [nzXs]="24" nzErrorTip="This Input is Requied !">
+                                    <input nz-input placeholder="Name" formControlName="name" />
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+
+                        <div nz-col nzSpan="24">
+                        </div>
+                        <div nz-col nzSpan="24">
+                            <nz-form-item>
+                                <nz-form-control nzHasFeedBack [nzXs]="24" nzErrorTip="This Input is Requied !">
+                                    <textarea rows="1" nz-input placeholder="Description"
+                                        formControlName="description"></textarea>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                    </div>
+                    <button nz-button class="login-form-button login-form-margin" [nzType]="'primary'" >Update</button>
+                </form>
+            </div>
+        </div>
+    </nz-spin>
+</div>

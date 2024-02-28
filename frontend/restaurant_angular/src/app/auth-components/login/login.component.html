@@ -1,0 +1,38 @@
+<div class="bg" style="background-color: #f8f8f8;">
+    <nz-spin [nzSpinning]="isSpinning" [nzSize]="'large'" nzTip="Working...">
+        <div class="parent">
+            <div class="child">
+                <div nz-row class="imgDiv">
+                    <div nz-col nzSpan="24">
+                        <h1 style="margin-left: 50px;">Login</h1>
+                    </div>
+                </div>
+                <form nz-form [formGroup]="loginForm" class="login-form" (ngSubmit)="submitForm()">
+                    <nz-form-item>
+                        <nz-form-control nzErrorTip="The input is not valid Email !">
+                            <nz-input-group nzPrefixIcon="user"> <input nz-input placeholder="E-mail" id="email"
+                                    formControlName="email"></nz-input-group>
+                        </nz-form-control>
+                    </nz-form-item>
+                    <nz-form-item>
+                        <nz-form-control [nzErrorTip]="errorPass">
+                            <nz-input-group nzPrefixIcon="lock"> <input nz-input placeholder="Password" id="password"
+                                    type="password" formControlName="password"></nz-input-group>
+                            <ng-template #errorPass let-control>
+                                <ng-container *ngIf="control.hasError('required')">
+                                    Password is required !
+                                </ng-container>
+                                <ng-container *ngIf="control.hasError('pattern')">
+                                    Password is should contains 8 character, 1 lowercase, 1 uppercase, 1 number and 1
+                                    special !
+                                </ng-container>
+                            </ng-template>
+                        </nz-form-control>
+                    </nz-form-item>
+                    <button nz-button class="login-form-button login-form-margin" [nzType]="'primary'">Login</button>
+                    Or <a routerLink="/signup"> register now !</a>
+                </form>
+            </div>
+        </div>
+    </nz-spin>
+</div>
