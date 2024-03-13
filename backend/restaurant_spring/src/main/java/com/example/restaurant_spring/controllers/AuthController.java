@@ -54,7 +54,7 @@ public class AuthController {
         try {
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword()));
         } catch (BadCredentialsException e) {
-            throw new BadCredentialsException("Inconnect username or password");
+            throw new BadCredentialsException("InConnect username or password");
         } catch (DisabledException disabledException) {
             response.sendError(HttpServletResponse.SC_NOT_FOUND, "User not active");
             return null;

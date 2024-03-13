@@ -34,8 +34,6 @@ public class WebSercurityConfiguration {
                         req.requestMatchers("api/auth/**")
                                 .permitAll()
                                 .requestMatchers("api/admin/**").hasAnyAuthority(UserRole.ADMIN.name())
-//                                .requestMatchers("api/v1/nhanvien/**").hasAnyAuthority("NHANVIEN")
-//                                .requestMatchers("api/v1/khachhang/**").hasAnyAuthority("KHACHHANG")
                                 .anyRequest()
                                 .authenticated())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))// quản lí phiên
@@ -45,6 +43,7 @@ public class WebSercurityConfiguration {
                 );
         return http.build();
     }
+
     @Bean
     public AuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider authenticationProvider = new DaoAuthenticationProvider();
@@ -52,6 +51,7 @@ public class WebSercurityConfiguration {
         authenticationProvider.setPasswordEncoder(passwordEncoder());
         return authenticationProvider;
     }
+
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();

@@ -20,28 +20,32 @@ public class CustomerController {
 
     @GetMapping("/categories")
     public ResponseEntity<List<CategoryDto>> getAllCategories() {
-        List<CategoryDto> categoryDtos = customerService.getAllCategories();
-        if (categoryDtos == null) return ResponseEntity.notFound().build();
-        return ResponseEntity.ok(categoryDtos);
+        List<CategoryDto> categoryDto = customerService.getAllCategories();
+        if (categoryDto == null) return ResponseEntity.notFound().build();
+        return ResponseEntity.ok(categoryDto);
     }
+
     @GetMapping("/categories/{title}")
     public ResponseEntity<List<CategoryDto>> getCategoriesByTitle(@PathVariable String title) {
-        List<CategoryDto> categoryDtos = customerService.getCategoriesByTitle(title);
-        if (categoryDtos == null) return ResponseEntity.notFound().build();
-        return ResponseEntity.ok(categoryDtos);
+        List<CategoryDto> categoryDto = customerService.getCategoriesByTitle(title);
+        if (categoryDto == null) return ResponseEntity.notFound().build();
+        return ResponseEntity.ok(categoryDto);
     }
+
     @GetMapping("/{categoryId}/products")
     public ResponseEntity<List<ProductDto>> getAllProductByCategory(@PathVariable Long categoryId) {
-        List<ProductDto> productDtos = customerService.getAllProductByCategory(categoryId);
-        if (productDtos == null) return ResponseEntity.notFound().build();
-        return ResponseEntity.ok(productDtos);
+        List<ProductDto> productDto = customerService.getAllProductByCategory(categoryId);
+        if (productDto == null) return ResponseEntity.notFound().build();
+        return ResponseEntity.ok(productDto);
     }
+
     @GetMapping("/{categoryId}/product/{title}")
     public ResponseEntity<List<ProductDto>> getProductByCategoryAndTitle(@PathVariable Long categoryId, @PathVariable String title) {
-        List<ProductDto> productDtos = customerService.getProductByCategoryAndTitle(categoryId, title);
-        if (productDtos == null) return ResponseEntity.notFound().build();
-        return ResponseEntity.ok(productDtos);
+        List<ProductDto> productDto = customerService.getProductByCategoryAndTitle(categoryId, title);
+        if (productDto == null) return ResponseEntity.notFound().build();
+        return ResponseEntity.ok(productDto);
     }
+
     @PostMapping("/reservation")
     public ResponseEntity<?> postReservation(@RequestBody ReservationDto reservationDto) throws IOException {
         ReservationDto createReservationDto = customerService.postReservation(reservationDto);
@@ -50,10 +54,11 @@ public class CustomerController {
         }
         return ResponseEntity.status(HttpStatus.CREATED).body(createReservationDto);
     }
+
     @GetMapping("/reservation/{customerId}")
     public ResponseEntity<List<ReservationDto>> getReservationByUser(@PathVariable Long customerId) {
-        List<ReservationDto> reservationDtos = customerService.getReservationByUser(customerId);
-        if (reservationDtos == null) return ResponseEntity.notFound().build();
-        return ResponseEntity.ok(reservationDtos);
+        List<ReservationDto> reservationDto = customerService.getReservationByUser(customerId);
+        if (reservationDto == null) return ResponseEntity.notFound().build();
+        return ResponseEntity.ok(reservationDto);
     }
 }

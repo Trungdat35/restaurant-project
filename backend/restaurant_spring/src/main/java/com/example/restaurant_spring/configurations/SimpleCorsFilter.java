@@ -12,16 +12,15 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Component
-@Order(Ordered.HIGHEST_PRECEDENCE)
+@Order(Ordered.HIGHEST_PRECEDENCE) // đánh dấu bean ưu tiên nhất
 public class SimpleCorsFilter implements Filter { // xem ai được lấy tài nguyên
-
-    private final String clientAppUrl = "http://localhost:4200";
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         HttpServletResponse response = (HttpServletResponse) servletResponse;
         HttpServletRequest request = (HttpServletRequest) servletRequest;
 
+        String clientAppUrl = "http://localhost:4200";
         response.setHeader("Access-Control-Allow-Origin", clientAppUrl);
         response.setHeader("Access-Control-Allow-Credentials", "true");
         response.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE,PUT");
