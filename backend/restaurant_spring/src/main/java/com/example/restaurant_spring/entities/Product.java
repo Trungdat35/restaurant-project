@@ -29,9 +29,7 @@ public class Product {
     @ManyToOne
     @JoinColumn(name = "categoryId",referencedColumnName = "categoryId",foreignKey = @ForeignKey(name = "fk_category_product"))
     private Category category;
-    @ManyToOne
-    @JoinColumn(name = "reservationId",referencedColumnName = "reservationId",foreignKey = @ForeignKey(name = "fk_reservation_product"))
-    private Reservation reservation;
+
     public ProductDto getProductDto() {
         ProductDto productDto = new ProductDto();
         productDto.setId(productId);
@@ -41,7 +39,6 @@ public class Product {
         productDto.setReturnedImg(img);
         productDto.setCategoryId(category.getCategoryId());
         productDto.setCategoryName(category.getName());
-        productDto.setReservationId(reservation.getReservationId());
         return productDto;
     }
 

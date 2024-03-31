@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 export class AddCategoryComponent {
   categoryForm: FormGroup;
   selectedFile: File | null;
-  imagePreview: string | ArrayBuffer | null;
+  imagePreview: string | ArrayBuffer | null; // union
   constructor(private service: AdminService, private router: Router, private fb: FormBuilder,private message :NzMessageService) { }
 
   ngOnInit() {

@@ -1,11 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { IAuthService } from '../i-auth-service';
 const BASIC_URL = "http://localhost:8088/"
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root' // toàn ứng dụng
 })
-export class AuthService {
+export class AuthService implements IAuthService{
 
   constructor(private http: HttpClient) { }
 

@@ -1,15 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
-import { AuthService } from 'src/app/auth-service/auth-service/auth.service';
+import { IAuthService } from 'src/app/auth-service/i-auth-service';
+
 
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.scss']
 })
-export class SignupComponent {
+export class SignupComponent implements OnInit{
   isSpinning: boolean;
   validateForm: FormGroup;
 
@@ -22,7 +23,7 @@ export class SignupComponent {
     }
     return {};
   }
-  constructor(private service: AuthService,  private router: Router,private fb: FormBuilder, private notification: NzNotificationService) {
+  constructor(@Inject(String) private service: IAuthService, private router: Router,private fb: FormBuilder, private notification: NzNotificationService) {
   }
   ngOnInit() {
     this.validateForm = this.fb.group({

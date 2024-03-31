@@ -23,9 +23,6 @@ public class Reservation {
     @ManyToOne()
     @JoinColumn(name = "userId",referencedColumnName = "userId",foreignKey = @ForeignKey(name = "fk_user_reservation"))
     private User user;
-    @OneToMany(mappedBy = "reservation",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
-    @JsonIgnore
-    private Set<Product> productSet;
 
     public ReservationDto getReservationDto(){
         ReservationDto reservationDto = new ReservationDto();

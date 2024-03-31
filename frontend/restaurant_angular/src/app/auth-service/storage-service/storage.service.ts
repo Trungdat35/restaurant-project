@@ -49,7 +49,7 @@ export class StorageService {
     const role:string = this.getUserRole();
     return role == "CUSTOMER"
   }
-  static signout(){
+  static logout(){
     window.localStorage.removeItem(USER);
     window.localStorage.removeItem(TOKEN);
   }
